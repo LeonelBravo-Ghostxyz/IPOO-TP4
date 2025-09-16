@@ -22,7 +22,7 @@ class SecuenciaEnteros{
     int aparicion = 0;
     for (int i = 0; i < sec.length; i++) {
     if(sec[i] == n && aparicion < 1 || sec[i] == n && i == sec.length-1){
-            aparicion = aparicion++;
+            aparicion++;
             sec[i] = 0;
             }
         }
@@ -66,7 +66,7 @@ class SecuenciaEnteros{
     public int cantidadMayores(int n){
         int cantidad = 0;
         for (int i = 0; i < sec.length; i++) {
-            if(sec[i] > n) cantidad = cantidad++;
+            if(sec[i] > n) cantidad++;
         }
         return cantidad;
     }
@@ -74,7 +74,7 @@ class SecuenciaEnteros{
         int cant = 0;
         for (int i = 0; i < sec.length && cant < sec.length/2; i++) {
             if(sec[i] == n){
-                cant = cant++;
+                cant++;
             }
         }
         if(cant == sec.length)return true;
