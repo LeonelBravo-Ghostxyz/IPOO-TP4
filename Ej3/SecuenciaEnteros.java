@@ -1,3 +1,4 @@
+package Ej3;
 class SecuenciaEnteros{
     //Atrbituos de instancia
     private int[] sec;
