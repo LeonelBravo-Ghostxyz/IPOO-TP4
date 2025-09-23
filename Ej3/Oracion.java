@@ -6,10 +6,14 @@ public class Oracion {
 
     // Constructor
     public Oracion(String str){
-        for (int i = 0; i < str.length(); i++) {
-            s[i] = str.charAt(i);
-        }
+    // Inicializa el array 's' con la longitud de la cadena 'str'
+    s = new char[str.length()]; 
+    
+    // Ahora puedes copiar los caracteres a la nueva instancia del array
+    for (int i = 0; i < str.length(); i++) {
+        s[i] = str.charAt(i);
     }
+}
 
     // Comandos
     public void reducirBlancos(){
