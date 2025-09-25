@@ -41,28 +41,33 @@ public class TesterEj3 {
         System.out.println();
 
         // Pruebas de la clase Oracion
-        Oracion oracion1 = new Oracion("  Hola   Mundo  Esto  Es   Java  ");
+        Oracion oracion1 = new Oracion("HOY   VA  A LLOVER    A LA TARDE");
         System.out.println("\nOracion original:");
         for (int i = 0; i < oracion1.longitud(); i++) {
-            System.out.print(oracion1.obtenerLetra(i)); // Esperado: "  Hola   Mundo  Esto  Es   Java  "
+            System.out.print(oracion1.obtenerLetra(i)); // Esperado: "  HOY VA A LLOVER A LA TARDE  "
         }
         System.out.println();
         oracion1.reducirBlancos();
         System.out.println("Despues de reducir blancos:");
         for (int i = 0; i < oracion1.longitud(); i++) {
-            System.out.print(oracion1.obtenerLetra(i)); // Esperado: " Hola Mundo Esto Es Java "
+            System.out.print(oracion1.obtenerLetra(i)); // Esperado: "HOY VA A LLOVER A LA TARDE"
         }
         System.out.println();
         System.out.println("Longitud de la oracion: " + oracion1.longitud()); // Esperado: longitud del arreglo
-        System.out.println("Contar palabras: " + oracion1.contarPalabras()); // Esperado: 5
+        System.out.println("Contar palabras: " + oracion1.contarPalabras()); // Esperado: 7
         System.out.println("La letra en posicion 1 es letra? " + oracion1.esLetra(1)); // Esperado: true
         System.out.println("La letra en posicion 0 es letra? " + oracion1.esLetra(0)); // Esperado: false
-        System.out.println("La letra en posicion 1 es el inicio de una palabra? " + oracion1.esPrimeraPalabra(1)); // Esperado: true
-        System.out.println("La letra en posicion 5 es el inicio de una palabra? " + oracion1.esPrimeraPalabra(5)); // Esperado: false
-        System.out.println("Longitud de la palabra mas larga: " + oracion1.masLarga()); // Esperado: 5 (Java)
+        System.out.println("La letra en posicion 1 es el inicio de una palabra? " + oracion1.esPrimeraPalabra(1)); // Esperado: false
+        System.out.println("La letra en posicion 4 es el inicio de una palabra? " + oracion1.esPrimeraPalabra(4)); // Esperado: true
+        System.out.println("Estado Actual de la oración:");
+        for (int i = 0; i < oracion1.longitud(); i++) {
+            System.out.print(oracion1.obtenerLetra(i)); // Esperado: "HOY VA A LLOVER A LA TARDE"
+        }
+        System.out.println();
+        System.out.println("Longitud de la palabra mas larga: " + oracion1.masLarga()); // Esperado: 5 (TARDE) (LLOVER)
         System.out.println("Hay al menos 3 vocales? " + oracion1.hayNVocales(3)); // Esperado: true
-        System.out.println("Hay al menos 10 vocales? " + oracion1.hayNVocales(10)); // Esperado: false
-        System.out.println("Hay dos vocales consecutivas? " + oracion1.dosVocalesConsecutivas()); // Esperado: true
+        System.out.println("Hay al menos 10 vocales? " + oracion1.hayNVocales(9)); // Esperado: true
+        System.out.println("Hay dos vocales consecutivas? " + oracion1.dosVocalesConsecutivas()); // Esperado: false
     
         // Prueba de histograma
         SecuenciaEnteros hist = oracion1.histograma();

@@ -65,11 +65,13 @@ public class Oracion {
         for (int i = 0; i < s.length-1; i++) {
             if(s[i] >= 'A' && s[i] <= 'Z'){
                 cont++;
-                if(cont > retorno && s[i+1] == ' '){ // El condicional busca que el contador sea mayor al retorno y que la palabra no tenga mas letras
+            }
+            if(cont > retorno && s[i+1] == ' '){ // El condicional busca que el contador sea mayor al retorno y que la palabra no tenga mas letras
                     retorno = cont;
                     cont=0;
+                }else{
+                    if(s[i+1] == ' ')cont=0; // Si encuentra un espacio resetea el contador
                 }
-            }
         }
         return retorno;
     }
