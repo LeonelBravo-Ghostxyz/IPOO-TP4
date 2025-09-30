@@ -16,16 +16,44 @@ public class Oracion {
 }
 
     // Comandos
-    public void reducirBlancos(){
-        char blanco = ' ';
-        for (int i = 0; i < s.length-1; i++) {
-            if(s[i] == blanco && s[i+1] == blanco){
-                for (int j = 0; j < s.length-i-1; j++) {
-                    s[i+j] = s[i+j+1];
-                }
+// Asume que 's' es un campo de la clase (e.g., private char[] s;)
+public void reducirBlancos() {
+    char blanco = ' ';
+    int contBlancosEliminados = 0; // Usaremos esta variable para contar los espacios que quitamos.
+    
+    // Bucle exterior: Recorre el array buscando pares de espacios (s[i] y s[i+1]).
+    for (int i = 0; i < s.length - 1; i++) {
+        
+        // Condición: Si encontramos DOS espacios consecutivos...
+        if (s[i] == blanco && s[i+1] == blanco) {
+            
+            // Bucle interior (Desplazamiento): Elimina el segundo espacio (s[i+1])
+            // "shifteando" todos los caracteres siguientes una posición a la izquierda.
+            for (int j = 0; j < s.length - i - 1; j++) {
+                s[i+j] = s[i+j+1];
             }
+            // CORRECCIÓN CLAVE: Decrementamos 'i' para compensar el 'i++' del bucle exterior.
+            // Esto obliga a RE-EVALUAR la posición actual en la siguiente iteración.
+            // Si había TRES espacios, el array se redujo a DOS en esta posición, 
+            // y necesitamos verificar si ese nuevo par debe ser reducido de nuevo.
+            i--; 
+            
+            // Incrementamos el contador, ya que hemos eliminado un carácter efectivo.
+            contBlancosEliminados++;
         }
     }
+    // Una vez que se eliminan los espacios, la cola del array queda con caracteres duplicados.
+    // Usamos el contador para sobrescribir el final del array con espacios vacíos o null (si procede).
+    // Este bucle va desde el final 'útil' del array hasta el final real.
+    // El final útil es s.length - contBlancosEliminados.
+    for (int k = 0; k < contBlancosEliminados; k++) {
+        // Ponemos el carácter 'blanco' en las posiciones liberadas al final.
+        s[s.length - 1 - k] = blanco;
+    }
+    
+    // NOTA FINAL: Si se tratara de un String o StringBuilder, la lógica final sería distinta, 
+    // pero para un char[] se recomienda limpiar la cola como se muestra.
+}
     public void establecerLetra(int pos,char l){
         s[pos] = l;
     }
